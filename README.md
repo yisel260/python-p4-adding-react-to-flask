@@ -5,7 +5,7 @@
 - Use React and Flask together to build beautiful and powerful web applications.
 - Organize client and server code so that it is easy to understand and maintain.
 
-***
+---
 
 ## Key Vocab
 
@@ -32,17 +32,17 @@
   maintained until it is terminated by one side. This allows for speedy and
   seamless connections between frontends and backends.
 
-***
+---
 
 ## Introduction
 
 Earlier in this phase, we used React and Flask together for two different
-applications: Chatterbox, a messenger with CRUD functionality, and Plantsy,
-a plant shop with CRUD functionality through a RESTful backend. In these
-labs, we focused on the server-side (Python) code. Now, let's take a closer
-look at the JavaScript that creates the user interface.
+applications: Chatterbox, a messenger with CRUD functionality, and Plantsy, a
+plant shop with CRUD functionality through a RESTful backend. In these labs, we
+focused on the server-side (Python) code. Now, let's take a closer look at the
+JavaScript that creates the user interface.
 
-***
+---
 
 ## Setup
 
@@ -64,20 +64,19 @@ In the second window, enter the `client/` directory and run:
 
 > **NOTE: There's a lot more to keep track of now! When you have to run several
 > commands to start working, it's useful to write scripts to automate the
-> startup process. Refer back to "Configuring Python Applications" in Phase 3
-> if you need help getting started! Don't worry about messing things up- you can
+> startup process. Refer back to "Configuring Python Applications" in Phase 3 if
+> you need help getting started! Don't worry about messing things up- you can
 > always re-fork the lesson if you need to.**
 
 In your browser, you should see the Chatterbox app in all its glory:
 
 ![screenshot of chatterbox app with purple header bar and messages from several
-users](
-https://curriculum-content.s3.amazonaws.com/python/python-p4-adding-react-to-flask-chatterbox.png)
+users](https://curriculum-content.s3.amazonaws.com/python/python-p4-adding-react-to-flask-chatterbox.png)
 
 Once you've confirmed that the application is running correctly, open up the
 `client/` directory to explore our JavaScript code.
 
-***
+---
 
 ## The Client-Server Model
 
@@ -90,8 +89,8 @@ tasks to inform how we structure our applications in development.
 Within our base directory where we initialize Git, we create our basic
 documentation files like `README.md` and two directories: `client/` and
 `server/`. You may prefer to name them more descriptively, like
-`chatterbox-client/` and `chatterbox-server/`. (Some people find this
-redundant, others informative. Ultimately up to you!)
+`chatterbox-client/` and `chatterbox-server/`. (Some people find this redundant,
+others informative. Ultimately up to you!)
 
 Inside of the `client/` directory, you will use Node to create the skeleton for
 your client-side code and install dependencies. In the `server/` directory, you
@@ -107,7 +106,7 @@ we see in using `fetch()`. Websocket, another protocol, keeps the connection
 open until it is explicitly ended by either side- we will learn more about this
 with `socket.io` later in this module.
 
-***
+---
 
 ## React `fetch()`
 
@@ -147,7 +146,7 @@ function App() {
     fetch("http://127.0.0.1:5555/messages")
       .then(r => {
         if (r.ok) {
-          return r.json
+          return r.json()
         }
         throw r;
       })
@@ -200,17 +199,17 @@ function NewMessage({ currentUser, onAddMessage }) {
 
 Rather than `useEffect`, here we have a hook called `onAddMessage` passed to the
 `NewMessage` element that updates the entire app when a message is confirmed to
-have been created. `handleSubmit()` is invoked each time a user hits the "Send" button
-and generates a `POST` request with the body of the `NewMessage` element.
+have been created. `handleSubmit()` is invoked each time a user hits the "Send"
+button and generates a `POST` request with the body of the `NewMessage` element.
 
 `fetch()` takes an optional object as a second argument after the Flask API's
 URL with an HTTP request method, headers to specify the format of the message,
 and a message body. (`PATCH` requests need these elements as well!)
 
-After generating a new record in the database, Flask returns a response that
-is assigned to `r` and converted to JSON if necessary. Finally, we invoke
-`onAddMessage` to update the app with this new message and reset the form to
-be empty and ready for new input.
+After generating a new record in the database, Flask returns a response that is
+assigned to `r` and converted to JSON if necessary. Finally, we invoke
+`onAddMessage` to update the app with this new message and reset the form to be
+empty and ready for new input.
 
 ### CORS Recap
 
@@ -237,7 +236,7 @@ CORS(app)
 
 ```
 
-***
+---
 
 ## Conclusion
 
@@ -247,7 +246,7 @@ process `fetch()` data, and implement CORS! We will elaborate on these concepts
 and learn how to improve connections between full-stack application clients and
 servers in the coming lessons.
 
-***
+---
 
 ## Resources
 
